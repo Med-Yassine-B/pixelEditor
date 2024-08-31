@@ -1,0 +1,197 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwjeiw3hbcvis"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_24nkg"]
+[ext_resource type="Texture2D" uid="uid://dt2ka53dil6ir" path="res://icon.svg" id="2_eyg8l"]
+[ext_resource type="Shader" path="res://control.gdshader" id="2_ovmpe"]
+[ext_resource type="Texture2D" uid="uid://mnkscxxafrl4" path="res://saves/image.png" id="3_v8570"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsgyb"]
+shader = ExtResource("2_ovmpe")
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_24nkg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bar" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/bar"]
+modulate = Color(0.654387, 0.524208, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="saveButton" type="Button" parent="VBoxContainer/bar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "save"
+
+[node name="loadButton" type="Button" parent="VBoxContainer/bar/HBoxContainer"]
+layout_mode = 2
+text = "load"
+
+[node name="mainWindow" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="Panel" type="Panel" parent="VBoxContainer/mainWindow"]
+modulate = Color(7.70092e-07, 0.577212, 0.617619, 1)
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/mainWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="toolsHolder" type="Control" parent="VBoxContainer/mainWindow/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Popup" type="Popup" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder"]
+position = Vector2i(539, 0)
+size = Vector2i(298, 576)
+visible = true
+
+[node name="ColorPicker" type="ColorPicker" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/Popup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="colorChanging" type="HBoxContainer" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/colorChanging"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/colorChanging"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "change color
+"
+icon_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="pencil" type="Button" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "pencil"
+
+[node name="eraser" type="Button" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "eracer"
+
+[node name="fill" type="Button" parent="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "fill"
+
+[node name="view" type="Control" parent="VBoxContainer/mainWindow/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="canvasHolder" type="Control" parent="VBoxContainer/mainWindow/HBoxContainer/view"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backgroundRect" type="TextureRect" parent="VBoxContainer/mainWindow/HBoxContainer/view/canvasHolder"]
+material = SubResource("ShaderMaterial_fsgyb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v8570")
+
+[node name="canvas" type="TextureRect" parent="VBoxContainer/mainWindow/HBoxContainer/view/canvasHolder"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eyg8l")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(303, 180)
+ok_button_text = "Open"
+file_mode = 0
+use_native_dialog = true
+
+[connection signal="pressed" from="VBoxContainer/bar/HBoxContainer/saveButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/bar/HBoxContainer/loadButton" to="." method="_on_load_button_pressed"]
+[connection signal="color_changed" from="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/Popup/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/colorChanging/Button" to="." method="_on_colorChange_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/GridContainer/pencil" to="." method="_on_pencil_pressed"]
+[connection signal="pressed" from="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/GridContainer/eraser" to="." method="_on_eraser_pressed"]
+[connection signal="pressed" from="VBoxContainer/mainWindow/HBoxContainer/toolsHolder/VBoxContainer/GridContainer/fill" to="." method="_on_fill_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
