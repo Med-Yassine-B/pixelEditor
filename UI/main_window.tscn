@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv4fv8tyrrajh"]
+
+[ext_resource type="Shader" path="res://shaders/control.gdshader" id="1_s2tlb"]
+[ext_resource type="Texture2D" uid="uid://mnkscxxafrl4" path="res://saves/image.png" id="2_h35f6"]
+[ext_resource type="Texture2D" uid="uid://dt2ka53dil6ir" path="res://icon.svg" id="3_g4e51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsgyb"]
+shader = ExtResource("1_s2tlb")
+
+[node name="mainWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(7.70092e-07, 0.577212, 0.617619, 1)
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="toolsHolder" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/toolsHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Popup" type="Popup" parent="HBoxContainer/toolsHolder"]
+auto_translate_mode = 1
+position = Vector2i(539, 0)
+size = Vector2i(298, 576)
+
+[node name="ColorPicker" type="ColorPicker" parent="HBoxContainer/toolsHolder/Popup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/toolsHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="colorChanging" type="HBoxContainer" parent="HBoxContainer/toolsHolder/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/toolsHolder/VBoxContainer/colorChanging"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="HBoxContainer/toolsHolder/VBoxContainer/colorChanging"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "change color
+"
+icon_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/toolsHolder/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="pencil" type="Button" parent="HBoxContainer/toolsHolder/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "pencil"
+
+[node name="eraser" type="Button" parent="HBoxContainer/toolsHolder/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "eracer"
+
+[node name="fill" type="Button" parent="HBoxContainer/toolsHolder/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "fill"
+
+[node name="view" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="canvasHolder" type="Control" parent="HBoxContainer/view"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backgroundRect" type="TextureRect" parent="HBoxContainer/view/canvasHolder"]
+material = SubResource("ShaderMaterial_fsgyb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h35f6")
+
+[node name="canvas" type="TextureRect" parent="HBoxContainer/view/canvasHolder"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_g4e51")

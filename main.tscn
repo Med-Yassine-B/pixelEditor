@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwjeiw3hbcvis"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_6htuv"]
+[ext_resource type="PackedScene" uid="uid://bf6onaq0344bq" path="res://UI/bar/bar.tscn" id="2_eey1j"]
+[ext_resource type="PackedScene" uid="uid://dv4fv8tyrrajh" path="res://UI/main_window.tscn" id="3_vew3u"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6htuv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bar" parent="VBoxContainer" instance=ExtResource("2_eey1j")]
+layout_mode = 2
+
+[node name="mainWindow" parent="VBoxContainer" instance=ExtResource("3_vew3u")]
+layout_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(303, 180)
+ok_button_text = "Open"
+file_mode = 0
+use_native_dialog = true
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
